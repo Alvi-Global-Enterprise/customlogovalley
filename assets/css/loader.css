@@ -1,0 +1,166 @@
+/* ───── LOADER ───── */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999999999999;
+}
+
+/* top-left brand */
+.loader-brand {
+  position: absolute;
+  top: 2.5rem;
+  left: 2.5rem;
+  font-size: clamp(11px, 1.2vw, 13px);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(240, 240, 240, 0.35);
+  opacity: 0;
+}
+
+/* centre name */
+.loader-name {
+  font-size: clamp(22px, 7.2vw, 80px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0 16px;
+  text-align: center;
+}
+
+/* tagline */
+.loader-tagline {
+  margin-top: 1rem;
+  font-size: clamp(11px, 1.4vw, 14px);
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: rgba(240, 240, 240, 0.4);
+  opacity: 0;
+}
+
+/* bottom bar */
+.loader-bottom {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 2.5rem;
+  right: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.loader-label {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(240, 240, 240, 0.3);
+  opacity: 0;
+}
+
+.loader-counter {
+  font-size: clamp(11px, 1.2vw, 13px);
+  letter-spacing: 0.2em;
+  color: rgba(240, 240, 240, 0.5);
+  opacity: 0;
+}
+
+/* progress bar */
+.loader-progress-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.loader-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--c1);
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.5);
+}
+
+/* accent dot next to counter */
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c1);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* reveal panels (curtain wipe) */
+.panel {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  z-index: 9998;
+  transform-origin: top;
+}
+
+/* ───── DEMO PAGE (behind loader) ───── */
+#page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--white);
+  opacity: 0;
+}
+
+#page h1 {
+  font-size: clamp(40px, 7vw, 90px);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+#page p {
+  font-size: 14px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* subtle scanline overlay for atmosphere */
+#page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+}
+:root {
+  --black: #0a0a0a;
+  --white: #f0f0f0;
+}
+.loader-name-inner {
+    display: inline-block;
+    overflow: hidden;
+}
+
+.loader-name-inner span {
+    display: inline-block;
+    transform: translateY(100%); /* 👈 start already DOWN */
+    will-change: transform;
+}
